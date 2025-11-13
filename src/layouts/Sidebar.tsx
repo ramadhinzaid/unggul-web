@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   return (
@@ -9,16 +9,28 @@ const Sidebar: React.FC = () => {
       </div>
       <div className="flex flex-col flex-1 overflow-y-auto">
         <nav className="flex-1 px-2 py-4 bg-gray-800">
-          <Link to="/" className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700">
+          <Link
+            to="/unggul-web/"
+            className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
+          >
             Dashboard
           </Link>
-          <Link to="/customers" className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+          <Link
+            to="/unggul-web/customers"
+            className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700"
+          >
             Customers
           </Link>
-          <Link to="/stock" className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+          <Link
+            to="/unggul-web/stock"
+            className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700"
+          >
             Stock
           </Link>
-          <Link to="/sales" className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700">
+          <Link
+            to="/unggul-web/sales"
+            className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700"
+          >
             Sales
           </Link>
         </nav>

@@ -8,6 +8,7 @@ import {
 import Table, { TableItem } from "../../components/Table";
 import type { AppDispatch } from "../../types/appType";
 import type Stock from "../../types/stockType";
+import { formatCurrency } from "../../services/utils";
 
 const StockList: React.FC<{ onEdit: (stock: Stock) => void }> = ({
   onEdit,
@@ -35,7 +36,7 @@ const StockList: React.FC<{ onEdit: (stock: Stock) => void }> = ({
                       item.code,
                       item.name,
                       item.category,
-                      `${item.price}`,
+                      formatCurrency(item.price),
                     ]}
                     onEdit={() => onEdit(item)}
                     onDelete={() => dispatch(deleteExistingStock(item.code))}

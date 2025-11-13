@@ -8,6 +8,7 @@ import {
 import Table, { TableItem } from "../../components/Table";
 import type { AppDispatch } from "../../types/appType";
 import type Sale from "../../types/saleType";
+import { formatCurrency } from "../../services/utils";
 
 const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
   const sales = useSelector(selectSales);
@@ -29,7 +30,11 @@ const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
                 items={sales.map((item) => (
                   <TableItem
                     key={item.note}
-                    data={[item.note, item.customer.name, `${item.subtotal}`]}
+                    data={[
+                      item.note,
+                      item.customer.name,
+                      formatCurrency(item.subtotal),
+                    ]}
                     onEdit={() => onEdit(item)}
                     onDelete={() => dispatch(deleteExistingSale(item.note))}
                   />
