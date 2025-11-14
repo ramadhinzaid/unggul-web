@@ -13,7 +13,6 @@ export default function Modal({
 }) {
   const handleConfirm = () => {
     onConfirm();
-    onClose();
   };
 
   return (
@@ -22,35 +21,33 @@ export default function Modal({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full flex flex-col max-h-[90vh]">
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close modal"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="p-6 flex border-b border-gray-200">
+              <h2 className="flex-2 text-2xl font-bold text-gray-800">
+                {title}
+              </h2>
+              <button
+                onClick={onClose}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                aria-label="Close modal"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            {/* Modal Header */}
-            <div className="p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
 
-            {/* Modal Body */}
             <div className="p-6 overflow-y-auto grow">{children}</div>
 
-            {/* Modal Footer */}
             <div className="p-6 flex gap-3 border-t border-gray-200">
               <button
                 onClick={onClose}

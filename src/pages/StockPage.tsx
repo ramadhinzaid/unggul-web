@@ -24,7 +24,9 @@ const StockPage: React.FC = () => {
 
   const handleConfirm = () => {
     if (formRef.current) {
-      formRef.current.submit();
+      if (formRef.current.submit()) {
+        handleCloseModal();
+      }
     }
   };
 

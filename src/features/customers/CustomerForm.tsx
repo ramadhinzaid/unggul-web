@@ -6,7 +6,7 @@ import type { AppDispatch } from "../../types/appType";
 import type Customer from "../../types/customerType";
 
 export interface CustomerFormHandle {
-  submit: () => void;
+  submit: () => boolean;
 }
 
 interface CustomerFormProps {
@@ -19,6 +19,10 @@ const CustomerForm = forwardRef<CustomerFormHandle, CustomerFormProps>(
     const [name, setName] = useState("");
     const [domicile, setDomicile] = useState("");
     const [gender, setGender] = useState<"Pria" | "Wanita">("Pria");
+    const [errors, setErrors] = useState({
+      name: "",
+      domicile: "",
+    });
 
     useEffect(() => {
       if (customerToEdit) {
@@ -32,7 +36,29 @@ const CustomerForm = forwardRef<CustomerFormHandle, CustomerFormProps>(
       }
     }, [customerToEdit]);
 
+    const validate = () => {
+      const newErrors = {
+        name: "",
+        domicile: "",
+      };
+      let isValid = true;
+      if (!name) {
+        newErrors.name = "Name is required";
+        isValid = false;
+      }
+      if (!domicile) {
+        newErrors.domicile = "Domicile is required";
+        isValid = false;
+      }
+      setErrors(newErrors);
+      return isValid;
+    };
+
     const handleSubmit = () => {
+      if (!validate()) {
+        return false;
+      }
+
       if (customerToEdit) {
         dispatch(
           updateExistingCustomer({
@@ -51,6 +77,7 @@ const CustomerForm = forwardRef<CustomerFormHandle, CustomerFormProps>(
           })
         );
       }
+      return true;
     };
 
     useImperativeHandle(ref, () => ({
@@ -66,6 +93,7 @@ const CustomerForm = forwardRef<CustomerFormHandle, CustomerFormProps>(
               name="name"
               value={name}
               onChange={(e) => setName(e)}
+              error={errors.name}
             />
 
             <TextField
@@ -73,6 +101,7 @@ const CustomerForm = forwardRef<CustomerFormHandle, CustomerFormProps>(
               name="domicile"
               value={domicile}
               onChange={(e) => setDomicile(e)}
+              error={errors.domicile}
             />
           </div>
           <div>

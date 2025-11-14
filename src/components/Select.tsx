@@ -4,12 +4,14 @@ export default function Select({
   value,
   items,
   onChange,
+  error,
 }: {
   label: string;
   name?: string;
   value: string;
   items: React.ReactElement[];
   onChange: (e: string) => void;
+  error?: string;
 }) {
   return (
     <div>
@@ -41,6 +43,7 @@ export default function Select({
           />
         </svg>
       </div>
+      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
     </div>
   );
 }
