@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import type { AppDispatch } from "../../types/appType";
 import type Sale from "../../types/saleType";
+import { X } from "lucide-react";
 
 export interface SalesFormHandle {
   submit: () => boolean;
@@ -223,7 +224,6 @@ const SalesForm = forwardRef<SalesFormHandle, SalesFormProps>(
               return (
                 <div key={index} className="grid grid-cols-12 gap-6 mt-4">
                   <div className="col-span-5">
-                    <label className="block text-sm font-medium text-gray-700"></label>
                     <Select
                       label="Product"
                       value={product.code}
@@ -251,19 +251,7 @@ const SalesForm = forwardRef<SalesFormHandle, SalesFormProps>(
                     onClick={() => handleDeleteProduct(index)}
                     className="mt-5 col-span-1 sm:col-span-1 items-center justify-items-center text-red-600 hover:text-red-900"
                   >
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
+                    <X />
                   </button>
                 </div>
               );

@@ -1,3 +1,6 @@
+import Lottie from "lottie-react";
+import empty from "./../assets/empty.json";
+
 export default function Table({
   headers,
   items,
@@ -23,7 +26,22 @@ export default function Table({
           </th>
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">{items}</tbody>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {items.length === 0 ? (
+          <tr>
+            <td colSpan={headers.length + 1}>
+              <Lottie
+                className="justify-self-center"
+                animationData={empty}
+                loop={false}
+                style={{ width: 150 }}
+              />
+            </td>
+          </tr>
+        ) : (
+          items
+        )}
+      </tbody>
     </table>
   );
 }

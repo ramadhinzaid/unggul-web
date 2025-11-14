@@ -9,6 +9,7 @@ import Table, { TableItem } from "../../components/Table";
 import type { AppDispatch } from "../../types/appType";
 import type Sale from "../../types/saleType";
 import { formatCurrency } from "../../services/utils";
+import Loading from "../../components/Loading";
 
 const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
   const sales = useSelector(selectSales);
@@ -16,7 +17,7 @@ const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   if (salesStatus === "loading") {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

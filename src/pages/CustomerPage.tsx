@@ -47,13 +47,15 @@ const CustomerPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-700">Customers</h1>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="mt-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
-      >
-        Add Customer
-      </button>
+      <div className="flex gap-4 justify-between">
+        <h1 className="text-2xl font-semibold text-gray-700">Customers</h1>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200 transform hover:scale-105"
+        >
+          Add Customer
+        </button>
+      </div>
       <Modal
         isOpen={isModalOpen}
         onClose={handleCloseModal}

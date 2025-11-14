@@ -9,6 +9,7 @@ import Table, { TableItem } from "../../components/Table";
 import type { AppDispatch } from "../../types/appType";
 import type Stock from "../../types/stockType";
 import { formatCurrency } from "../../services/utils";
+import Loading from "../../components/Loading";
 
 const StockList: React.FC<{ onEdit: (stock: Stock) => void }> = ({
   onEdit,
@@ -18,7 +19,7 @@ const StockList: React.FC<{ onEdit: (stock: Stock) => void }> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   if (stockStatus === "loading") {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

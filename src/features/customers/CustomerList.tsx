@@ -8,6 +8,7 @@ import {
 import Table, { TableItem } from "../../components/Table";
 import type { AppDispatch } from "../../types/appType";
 import type Customer from "../../types/customerType";
+import Loading from "../../components/Loading";
 
 const CustomerList: React.FC<{ onEdit: (customer: Customer) => void }> = ({
   onEdit,
@@ -17,7 +18,7 @@ const CustomerList: React.FC<{ onEdit: (customer: Customer) => void }> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   if (customerStatus === "loading") {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
