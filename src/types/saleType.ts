@@ -7,6 +7,7 @@ export default interface Sale {
   customer: Customer;
   subtotal: number;
   products: Stock[];
+  sumqty: number;
 }
 
 export interface SaleRequest {

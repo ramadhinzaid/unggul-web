@@ -27,7 +27,7 @@ const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <Table
-                headers={["ID Note", "Customer Name", "Subtotal"]}
+                headers={["ID Note", "Customer Name", "Subtotal", "Sum QTY"]}
                 items={sales.map((item) => (
                   <TableItem
                     key={item.note}
@@ -35,6 +35,7 @@ const SalesList: React.FC<{ onEdit: (sale: Sale) => void }> = ({ onEdit }) => {
                       item.note,
                       item.customer.name,
                       formatCurrency(item.subtotal),
+                      formatCurrency(item.sumqty, true),
                     ]}
                     onEdit={() => onEdit(item)}
                     onDelete={() => dispatch(deleteExistingSale(item.note))}

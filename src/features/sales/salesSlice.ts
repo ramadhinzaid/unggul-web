@@ -98,7 +98,16 @@ export const salesSlice = createSlice({
       .addCase(fetchSales.fulfilled, (state, action: PayloadAction<Sale[]>) => {
         state.status = "succeeded";
         state.sales = action.payload;
-        console.log(state.sales);
+        for (let index = 0; index < state.sales.length; index++) {
+          let sum = 0;
+          state.sales[index].products.forEach((v) => {
+            sum = sum + v.qty;
+          });
+          state.sales[index] = {
+            ...state.sales[index],
+            sumqty: sum,
+          };
+        }
       })
       .addCase(fetchSales.rejected, (state, action) => {
         state.status = "failed";
